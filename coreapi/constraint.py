@@ -1,6 +1,6 @@
 from typing import List
 
-from datapreprocessing.Individual import Individual
+from .individual import Individual
 
 
 class Constraint(object):

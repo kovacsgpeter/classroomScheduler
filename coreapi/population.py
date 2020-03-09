@@ -1,25 +1,30 @@
+import copy
+from random import random
 from typing import List
-from datapreprocessing.Individual import Individual
+from .individual import Individual
+from .constraint import Constraint
 
 
 class Population(object):
-
+    size: int
     population: List[Individual]
     fit: Individual
 
     # Initializer / Instance Attributes
-    def __init__(self, initial_population: List[Individual]):
+    def __init__(self, size, initial_population: List[Individual]):
         self.population = initial_population
+        self.size = size
 
     def add(self, individual: Individual):
         self.population.append(individual)
 
     def do_selection(self, population: List[Individual]) -> List[Individual]:
+        # create a mating pool y copyiing individuals x times
         pass
 
-    def do_reproduction(self):
+    def do_reproduction(self, constraints: List[Constraint]):
         # create mating pool
-        mating_pool: List[Individual] = self.do_selection(self.population)
+
         # crossover - create child with combining parents
         # mutation - mutate childs dna base on a given probabiliy
         # add to new population

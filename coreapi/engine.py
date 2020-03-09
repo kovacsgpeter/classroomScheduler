@@ -1,8 +1,8 @@
 from typing import List
 
-from datapreprocessing.Constraint import Constraint
-from datapreprocessing.Individual import Individual
-from datapreprocessing.Population import Population
+from .constraint import Constraint
+from .individual import Individual
+from .population import Population
 
 
 class Engine(object):
@@ -24,7 +24,7 @@ class Engine(object):
         pass
 
     def do_generate_new_generation(self):
-        self.population.do_reproduction()
+        self.population.do_reproduction(constraints)
         pass
 
     # returns false if there is no fit for constraints else true
