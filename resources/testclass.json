@@ -1,0 +1,28 @@
+{
+  "classes":[
+    {"class_id": "1a"},
+    {"class_id": "1b"}
+  ],
+  "teachers":[
+    {"name":  "Margit", "subjects": ["german"]},
+    {"name":  "Klára", "subjects": ["math"]}
+  ],
+  "subjects":[
+    {"subject_name":  "math"},
+    {"subject_name":  "german"}
+  ],
+  "constraints":[
+    {"constraint_name": "ClassMaxHourPerDayConstraint",
+    "variables":  [
+      {"max_hour": 5}
+    ]
+    },
+    {
+      "constraint_name": "ClassMaxHourPerDayPerSubjectConstraint",
+      "variables": [
+        {"max_hour_of_subject": 1},
+        {"subject":  "math"}
+      ]
+    }
+  ]
+}
