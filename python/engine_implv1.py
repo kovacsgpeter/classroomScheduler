@@ -1,11 +1,12 @@
 from typing import List
 
-from .constraint import Constraint
-from .individual import Individual
-from .population import Population
+from python.engine import Engine
+from python.individual import Individual
+from python.constraint import Constraint
+from python.population import Population
 
 
-class Engine(object):
+class EngineImplV1(Engine):
 
     population: Population
     constraints: List[Constraint]
@@ -17,16 +18,16 @@ class Engine(object):
         pass
 
     def create_constraint_list_from_json(self, constraint_json: str) -> List[Constraint]:
-        pass
+        return super().create_constraint_list_from_json(constraint_json)
 
     @classmethod
     def create_initial_population(self, pop_json: str) -> List[Individual]:
-        pass
+        return super().create_initial_population(pop_json)
 
     def do_generate_new_generation(self):
-        self.population.do_reproduction(constraints)
-        pass
+        super().do_generate_new_generation()
 
-    # returns false if there is no fit for constraints else true
     def do_evaluate_against_constraints(self, constraints: List[Constraint]) -> bool:
-        pass
+        return super().do_evaluate_against_constraints(constraints)
+
+

@@ -1,8 +1,7 @@
-import copy
-from random import random
 from typing import List
-from .individual import Individual
-from .constraint import Constraint
+
+from python.individual import Individual
+from python.constraint import Constraint
 
 
 class Population(object):

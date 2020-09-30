@@ -1,8 +1,3 @@
-from typing import List
-
-from .individual import Individual
-
-
 class Constraint(object):
 
 
@@ -10,6 +5,9 @@ class Constraint(object):
     def __init__(self):
         pass
 
+    def fill(self, *arg):
+        pass
+
     # could return a percentage in the future for more flexible processing
-    def evaluate(self, individual: Individual) -> bool:
+    def evaluate(self, individual) -> bool:
         pass

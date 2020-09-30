@@ -1,10 +1,7 @@
 from typing import List
 
-from .constraint import Constraint
-
-
-class Slot(object):
-    pass
+from python.constraint import Constraint
+from python.slot import Slot
 
 
 class Individual(object):
@@ -24,3 +21,4 @@ class Individual(object):
 
     def mutate(self, individual: 'Individual') -> 'Individual':
         pass
+

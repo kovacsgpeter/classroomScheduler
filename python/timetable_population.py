@@ -2,12 +2,13 @@ import copy
 from random import random
 from typing import List
 
-from coreapi.population import Population
-from coreapi.individual import Individual
-from coreapi.constraint import Constraint
+from python.individual import Individual
+from python.constraint import Constraint
+from python.population import Population
 
 
 class TimeTablePopulation(Population):
+
     def add(self, individual: Individual):
         super().add(individual)
 
@@ -20,6 +21,7 @@ class TimeTablePopulation(Population):
         return mating_pool
 
     def do_reproduction(self, constraints: List[Constraint]):
+
         mating_pool = self.do_selection(self.population)
         self.population.clear()
 

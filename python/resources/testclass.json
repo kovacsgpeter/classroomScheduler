@@ -12,14 +12,14 @@
     {"subject_name":  "german"}
   ],
   "constraints":[
+
     {"constraint_name": "ClassMaxHourPerDayConstraint",
     "variables":  [
       {"max_hour": 5}
     ]
     },
-    {
-      "constraint_name": "ClassMaxHourPerDayPerSubjectConstraint",
-      "variables": [
+    {"constraint_name": "ClassMaxHourPerDayPerSubjectConstraint",
+     "variables": [
         {"max_hour_of_subject": 1},
         {"subject":  "math"}
       ]
