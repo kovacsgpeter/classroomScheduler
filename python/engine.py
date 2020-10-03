@@ -3,6 +3,7 @@ from typing import List
 from .constraint import Constraint
 from .individual import Individual
 from .population import Population
+from .source_type import SourceType
 
 
 class Engine(object):
@@ -10,16 +11,10 @@ class Engine(object):
     population: Population
     constraints: List[Constraint]
 
-    # Initializer / Instance Attributes
-    def __init__(self, pop_json: str, constraint_json: str):
-        self.population = Population(Engine.create_initial_population(pop_json))
-        self.constraints = self.create_constraint_list_from_json(constraint_json)
-        pass
-
     def create_constraint_list_from_json(self, constraint_json: str) -> List[Constraint]:
         pass
 
-    def create_initial_population(self, pop_json: str) -> List[Individual]:
+    def create_initial_population(self, pop_json: str, source_type: SourceType) -> List[Individual]:
         pass
 
     def do_generate_new_generation(self):

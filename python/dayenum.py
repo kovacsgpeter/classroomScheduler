@@ -1,4 +1,5 @@
 import enum
+from random import randrange
 
 
 class DayEnum(enum.Enum):
@@ -11,3 +12,7 @@ class DayEnum(enum.Enum):
     wednesday = "wednesday"
     thursday = "thursday"
     friday = "friday"
+
+    @classmethod
+    def get_random_day(cls) -> str:
+        return cls._member_names_[randrange(0, len(cls._member_names_))]
