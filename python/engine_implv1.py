@@ -1,11 +1,9 @@
-from enum import Enum
 from random import randrange
 from typing import List
 
 from python.core_service import CoreService
 from python.dayenum import DayEnum
 from python.engine import Engine
-from python.individual import Individual
 from python.constraint import Constraint
 from python.population import Population
 from python.schooldata import SchoolData
@@ -14,7 +12,10 @@ from python.week import Week, Slotv1, SlotId
 
 
 
+
+
 class EngineImplV1(Engine):
+    primarch_slots: List[Slotv1] = []
 
     def create_constraint_list_from_json(self, constraint_json: str) -> List[Constraint]:
         return super().create_constraint_list_from_json(constraint_json)
@@ -26,11 +27,50 @@ class EngineImplV1(Engine):
         elif source_type == SourceType.json:
             data = CoreService.get_processed_json(pop)
 
-        slot1: Slotv1 = self.create_random_slot(data)
-        slot2: Slotv1 = self.create_random_slot(data)
+        population: List[Week] = self.create_primarchs(data)
 
-        week: Week = Week()
-        return None
+
+        initial_population: Population = Population(len(population), population)
+        return initial_population
+
+    def create_primarchs(self, data) -> List[Week]:
+
+        teachers = data.teachers
+        subjects = data.subjects
+        classes = data.classes
+        primarch_slot_ids: List[SlotId] = self.create_primarch_ids()
+        weeks: List[Week] = []
+
+        for id in primarch_slot_ids:
+            counter = 0
+            for teacher in teachers:
+                for subject in subjects:
+                    for sclass in classes:
+                        if len(weeks) < counter + 1:
+                            slots: list() = []
+                            week: Week = Week()
+                            week.slots = slots
+                            weeks.append(week)
+                        slot: Slotv1 = Slotv1()
+                        slot.slot_id = id
+                        slot.teacher = teacher
+                        slot.subject = subject
+                        slot.school_class = sclass
+                        self.primarch_slots.append(slot)
+                        weeks[counter].slots.append(slot)
+                        counter = counter + 1
+
+        return weeks
+
+    def create_primarch_ids(self) -> List[SlotId]:
+        primarch_slot_ids: List[SlotId] = []
+        for day in DayEnum.get_days():
+            for hour in range(8):
+                slot_id: SlotId = SlotId()
+                slot_id.day = day
+                slot_id.hour = hour
+                primarch_slot_ids.append(slot_id)
+        return primarch_slot_ids
 
     def get_random_element(self, size: int) -> int:
         return randrange(0, size)
@@ -60,3 +100,5 @@ class EngineImplV1(Engine):
 
     def do_evaluate_against_constraints(self, constraints: List[Constraint]) -> bool:
         return super().do_evaluate_against_constraints(constraints)
+
+

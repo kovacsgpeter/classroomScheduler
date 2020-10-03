@@ -14,7 +14,9 @@ class SlotId(object):
 
     day: DayEnum
     hour: int
-    pass
+
+
+
 
 
 class Slotv1(Slot):
@@ -30,6 +32,8 @@ class Slotv1(Slot):
 
 
 class Week(Individual):
+
+
 
     # Initializer / Instance Attributes
     def __init__(self):

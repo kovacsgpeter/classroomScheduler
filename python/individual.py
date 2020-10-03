@@ -6,7 +6,7 @@ from python.slot import Slot
 
 class Individual(object):
 
-    slots: List[Slot]
+    slots: List[Slot] = list()
     fitness: int
 
     # Initializer / Instance Attributes
